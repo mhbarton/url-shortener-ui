@@ -14,9 +14,7 @@ class App extends Component {
 
   addUrl = (newUrl) => {
     addUrlPost(newUrl)
-    .then(getUrls()
-    .then(newUrlUpdates => this.setState({ urls: newUrlUpdates.urls }) )
-    )
+    .then(newUrlUpdates => this.setState({ urls: [...this.state.urls, newUrlUpdates] }) )
   }
 
   componentDidMount() {
