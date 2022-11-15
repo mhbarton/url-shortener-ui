@@ -6,7 +6,7 @@ class UrlForm extends Component {
     this.props = props;
     this.state = {
       title: '',
-      urlToShorten: ''
+      urlToShorten: '',
     };
   }
 
@@ -16,11 +16,14 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if(this.state.title && this.state.urlToShorten){
+      this.props.addUrl({ title: this.state.title, urlToShorten: this.state.urlToShorten })
+    }
     this.clearInputs();
   }
 
   clearInputs = () => {
-    this.setState({title: '', urlToShorten: ''});
+    this.setState({title: '', urlToShorten: '' });
   }
 
   render() {
@@ -37,8 +40,8 @@ class UrlForm extends Component {
         <input
           type='text'
           placeholder='URL to Shorten...'
-          name='title'
-          value={this.state.title}
+          name='urlToShorten'
+          value={this.state.urlToShorten}
           onChange={e => this.handleNameChange(e)}
         />
 
